@@ -1,21 +1,28 @@
 import React from 'react'
-import Header from './components/Header'
+import Header from './Header'
+
 
 class App extends React.Component {
     state = {
         searchText: ''
     }
-    onTextChange(event) {
-
-
+    onTextChange = (event) => {
+        this.setState({ searchText: event.target.value })
     }
-    onSearchClick() {
 
+    onSearchClick = () => {
+        alert(this.state.searchText)
     }
+
     render() {
         return (
             <div className="App">
-                <Header />
+                <Header
+                    state={this.state}
+                    onTextChange={this.onTextChange}
+                    onSearchClick={this.onSearchClick}
+
+                />
             </div>
         )
     }
