@@ -7,18 +7,13 @@ import {
     TextField,
     Button,
     List,
-    ListItem,
-    ListItemAvatar,
-    ListItemText,
-    Avatar,
     Card,
     CardContent
 } from '@material-ui/core';
-import axios from 'axios';
+import getArtists from '../services/api'
+import ArtistCard from './ArtistCard'
+import SearchResult from './SearchResult'
 
-import './App.css';
-
-const API_URL = 'http://ws.audioscrobbler.com/2.0/?limit=5&format=json&method=artist.search&api_key=' + process.env.REACT_APP_LASTFM_APPKEY;
 
 const isEmpty = (str) => str.length === 0;
 class App extends Component {
@@ -40,19 +35,18 @@ class App extends Component {
         this.setState({ searchTerm: value });
     }
 
-    search = (terms) => {
-        const request = API_URL + '&artist=' + terms;
+    search = async (terms) => {
+        const data = await getArtists(terms)
+        const results = data.data.results;
+        const artists = results.artistmatches.artist.map((artist) => {
+            const avatarImage = artist.image.find(image => image.size === 'medium')['#text']
+            const cardImage = artist.image.find(image => image.size === 'large')['#text']
+            return { ...artist, avatar: avatarImage }
+        });
 
-        axios.get(request).then((response) => {
-            const results = response.data.results;
-            const artists = results.artistmatches.artist.map((artist) => {
-                const avatarImage = artist.image.find(image => image.size === 'medium');
-                const imageUrl = avatarImage['#text'];
-                return { ...artist, avatar: imageUrl }
-            });
 
-            this.setState({ artists });
-        })
+        this.setState({ artists });
+
     }
 
     onSearchClick = () => {
@@ -82,7 +76,7 @@ class App extends Component {
                     <AppBar position="static" color="primary">
                         <Toolbar className="search-bar">
                             <Typography variant="h6" color="inherit">
-                                Photos
+                                Last.fm
               </Typography>
                             <TextField
                                 placeholder="Search on Last.fm"
@@ -112,29 +106,8 @@ class App extends Component {
 
                 <List className="search-results">
                     {
-                        results.map((artist) => {
-                            return (
-                                <ListItem
-                                    button
-                                    key={artist.name}
-                                    className="result"
-                                    onClick={() => this.onResultClick(artist)}
-                                >
-                                    <ListItemAvatar>
-                                        <Avatar src={artist.avatar} alt={artist.name} />
-                                    </ListItemAvatar>
-                                    <ListItemText primary={artist.name} />
-                                    <Button
-                                        variant="outlined"
-                                        color="secondary"
-                                        size="small"
-                                        className="add-button"
-                                    >
-                                        Add to favorites
-                  </Button>
-                                </ListItem>
-                            )
-                        })
+                        results.map((artist) => <SearchResult artist={artist} onResultClick={this.onResultClick} />
+                        )
                     }
                 </List>
                 <div className="artist-container">
