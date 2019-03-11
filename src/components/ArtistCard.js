@@ -1,10 +1,17 @@
 import React from 'react';
 import { Card, CardContent, CardActions, Button } from '@material-ui/core'
+import Rating from 'material-ui-rating'
 
-import { Star, StarBorder } from '@material-ui/icons'
+// class ArtistCard extends React.Component {
+//   super()
+// }
+
+// No duplicates allowed
+// Rating
+// Format listeners number
 
 export const ArtistCard = (props) => {
-  const { artist, deleteArtist } = props;
+  const { artist, deleteArtist, handleRating } = props;
   console.log(artist.cardImage)
   return (
     <Card className="artist-card">
@@ -15,9 +22,13 @@ export const ArtistCard = (props) => {
         <h3>{artist.name}</h3>
         <p>{artist.listeners} listeners.</p>
         <p>
-          <StarBorder />
         </p>
       </CardContent>
+      <Rating
+        value={5}
+        max={5}
+        onChange={() => handleRating()}
+      />
       <CardActions>
         <Button size="small" color="primary">
           Share
