@@ -2,130 +2,130 @@ import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-
+import { getArtists } from '../services/api';
 import {
-    TextField,
-    Button,
-    List,
-    Card,
-    CardContent
+  TextField,
+  Button,
+  List
 } from '@material-ui/core';
-import getArtists from '../services/api'
-import ArtistCard from './ArtistCard'
-import SearchResult from './SearchResult'
-
+import { ArtistCard } from './ArtistCard';
+import { SearchResult } from './SearchResult';
+import { get } from 'https';
 
 const isEmpty = (str) => str.length === 0;
 class App extends Component {
-    state = {
-        searchTerm: '',
-        savedArtists: []
+  state = {
+    searchTerm: '',
+    savedArtists: []
+  }
+
+  componentDidMount() {
+    const existing = localStorage.getItem('savedArtists')
+    if (existing) {
+      this.setState({ savedArtists: JSON.parse(existing) })
     }
+  }
 
-    componentDidMount() {
-        const existing = localStorage.getItem('savedArtists')
-        if (existing) {
-            this.setState({ savedArtists: JSON.parse(existing) })
-        }
-    }
+  onTextChange = (event) => {
+    const value = event.target.value;
 
-    onTextChange = (event) => {
-        const value = event.target.value;
+    this.setState({ searchTerm: value });
+  }
 
-        this.setState({ searchTerm: value });
-    }
+  search = async (terms) => {
 
-    search = async (terms) => {
-        const data = await getArtists(terms)
-        const results = data.data.results;
-        const artists = results.artistmatches.artist.map((artist) => {
-            const avatarImage = artist.image.find(image => image.size === 'medium')['#text']
-            const cardImage = artist.image.find(image => image.size === 'large')['#text']
-            return { ...artist, avatar: avatarImage }
-        });
+    const artists = await getArtists(terms);
+    this.setState({ artists: artists })
+  }
 
+  onSearchClick = () => {
+    this.search(this.state.searchTerm);
+  }
 
-        this.setState({ artists });
+  clearSearch = () => {
+    this.setState({
+      searchTerm: '',
+      artists: []
+    })
+  }
 
-    }
+  updateArtists = (newArtists) => {
+    this.setState({ savedArtists: newArtists })
+    localStorage.setItem('savedArtists', JSON.stringify(newArtists));
+  }
 
-    onSearchClick = () => {
-        this.search(this.state.searchTerm);
-    }
+  deleteArtist = (artist) => {
+    const result = this.state.savedArtists.filter(item => item.name !== artist.name);
+    this.updateArtists(result);
+  }
 
-    clearSearch = () => {
-        this.setState({
-            searchTerm: '',
-            artists: []
-        })
-    }
+  onResultClick = (artist) => {
+    this.clearSearch();
+    const savedArtists = this.state.savedArtists;
+    savedArtists.push(artist);
+    this.updateArtists(savedArtists);
+  }
 
-    onResultClick = (artist) => {
-        this.clearSearch();
-        const savedArtists = this.state.savedArtists;
-        savedArtists.push(artist)
-        this.setState({ savedArtists: savedArtists })
-        localStorage.setItem('savedArtists', JSON.stringify(savedArtists));
-    }
-
-    render() {
-        const results = this.state.artists || [];
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <AppBar position="static" color="primary">
-                        <Toolbar className="search-bar">
-                            <Typography variant="h6" color="inherit">
-                                Last.fm
+  handleRating = () => {
+console.log('Work')
+  }
+  render() {
+    const results = this.state.artists || [];
+    return (
+      <div className="App">
+        <header className="App-header">
+          <AppBar position="static" color="primary">
+            <Toolbar className="search-bar">
+              <Typography variant="h6" color="inherit">
+                Photos
               </Typography>
-                            <TextField
-                                placeholder="Search on Last.fm"
-                                className="search-input"
-                                onChange={this.onTextChange}
-                                value={this.state.searchTerm}
-                            />
-                            <Button
-                                onClick={this.onSearchClick}
-                                variant="contained"
-                                color="secondary"
-                                disabled={isEmpty(this.state.searchTerm)}
-                            >
-                                Search
+              <TextField
+                placeholder="Search on Last.fm"
+                className="search-input"
+                onChange={this.onTextChange}
+                value={this.state.searchTerm}
+              />
+              <Button
+                onClick={this.onSearchClick}
+                variant="contained"
+                color="secondary"
+                disabled={isEmpty(this.state.searchTerm)}
+              >
+                Search
               </Button>
-                            {!isEmpty(this.state.searchTerm) && (
-                                <Button
-                                    onClick={this.clearSearch}
-                                    variant="contained"
-                                >
-                                    Clear
+              {!isEmpty(this.state.searchTerm) && (
+                <Button
+                  onClick={this.clearSearch}
+                  variant="contained"
+                >
+                  Clear
                 </Button>)
-                            }
-                        </Toolbar>
-                    </AppBar>
-                </header>
+              }
+            </Toolbar>
+          </AppBar>
+        </header>
 
-                <List className="search-results">
-                    {
-                        results.map((artist) => <SearchResult artist={artist} onResultClick={this.onResultClick} />
-                        )
-                    }
-                </List>
-                <div className="artist-container">
-                    {
-                        this.state.savedArtists.map((artist) => {
-                            return (
-                                <Card className="artist-card">
-                                    <CardContent>
-                                        {artist.name}
-                                    </CardContent>
-                                </Card>
-                            )
-                        })
-                    }
-                </div>
-            </div>
-        );
-    }
+        <List className="search-results">
+          {
+            results.map((artist, index) => {
+              return <SearchResult key={index} artist={artist} onResultClick={this.onResultClick} />
+            })
+          }
+        </List>
+        <div className="artist-container">
+          {
+            this.state.savedArtists.map((artist, index) => {
+              return <ArtistCard 
+              artist={artist} 
+              key={index} 
+              deleteArtist={this.deleteArtist} 
+              handleRating={this.handleRating} />
+            })
+          }
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
