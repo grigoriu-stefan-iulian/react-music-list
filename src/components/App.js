@@ -8,9 +8,14 @@ import {
   Button,
   List
 } from '@material-ui/core';
-import { ArtistCard } from './ArtistCard';
+import ArtistCard from './ArtistCard';
 import { SearchResult } from './SearchResult';
-import { get } from 'https';
+
+// No duplicates allowed
+// Rating
+// Format listeners number
+
+//Codrin: sistem de tracking al activitatii pe internet
 
 const isEmpty = (str) => str.length === 0;
 class App extends Component {
@@ -66,9 +71,6 @@ class App extends Component {
     this.updateArtists(savedArtists);
   }
 
-  handleRating = () => {
-console.log('Work')
-  }
   render() {
     const results = this.state.artists || [];
     return (
@@ -77,7 +79,7 @@ console.log('Work')
           <AppBar position="static" color="primary">
             <Toolbar className="search-bar">
               <Typography variant="h6" color="inherit">
-                Photos
+                Last.fm Music List
               </Typography>
               <TextField
                 placeholder="Search on Last.fm"
@@ -119,7 +121,7 @@ console.log('Work')
               artist={artist} 
               key={index} 
               deleteArtist={this.deleteArtist} 
-              handleRating={this.handleRating} />
+              />
             })
           }
         </div>
