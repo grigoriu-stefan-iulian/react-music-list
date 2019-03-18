@@ -11,9 +11,9 @@ import {
 import ArtistCard from './ArtistCard';
 import { SearchResult } from './SearchResult';
 
-// No duplicates allowed
+// No duplicates allowed - done
 // Rating - done
-// Format listeners number
+// Format listeners number - done
 // Codrin: sistem de tracking al activitatii pe internet
 // Component lifecycle: constructor(), componentDidMount(), render(), componentWillUnmount(), componentDidCatch()
 
@@ -67,8 +67,15 @@ class App extends Component {
   onResultClick = (artist) => {
     this.clearSearch();
     const savedArtists = this.state.savedArtists;
-    savedArtists.push({ ...artist, rating: null });
-    this.updateArtists(savedArtists);
+    const alreadyExists = this.state.savedArtists.find(item => item.name === artist.name)
+    if (!alreadyExists) {
+      savedArtists.push({ ...artist, rating: null });
+      this.updateArtists(savedArtists);
+
+    } else {
+      console.log('artist already saved')  //method to notify user that the artist already favorited
+    }
+
   }
 
   handleRating = (rating, artist) => {
