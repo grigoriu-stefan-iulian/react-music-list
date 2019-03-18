@@ -9,6 +9,7 @@
     "material-ui-rating": "^3.0.1",
     "node-sass": "^4.11.0",
     "normalize.css": "^8.0.1",
+    "numeral": "^2.0.6",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3",
