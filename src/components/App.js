@@ -14,8 +14,8 @@ import { SearchResult } from './SearchResult';
 // No duplicates allowed
 // Rating
 // Format listeners number
-
-//Codrin: sistem de tracking al activitatii pe internet
+// Codrin: sistem de tracking al activitatii pe internet
+// Component lifecycle: constructor(), componentDidMount(), render(), componentWillUnmount(), componentDidCatch()
 
 const isEmpty = (str) => str.length === 0;
 class App extends Component {
@@ -117,10 +117,10 @@ class App extends Component {
         <div className="artist-container">
           {
             this.state.savedArtists.map((artist, index) => {
-              return <ArtistCard 
-              artist={artist} 
-              key={index} 
-              deleteArtist={this.deleteArtist} 
+              return <ArtistCard
+                artist={artist}
+                key={index}
+                deleteArtist={this.deleteArtist}
               />
             })
           }

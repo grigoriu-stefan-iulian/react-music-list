@@ -30,8 +30,7 @@ class ArtistCard extends React.Component {
       return (
       
         <Card className="artist-card">  
-       {//this.getRatings()
-       }
+     
           <div className="image-container">
             <img src={artist.cardImage} alt={artist.name} />
           </div>
@@ -59,9 +58,5 @@ class ArtistCard extends React.Component {
     }
   }
 }
-
-// No duplicates allowed
-// Rating
-// Format listeners number
 
 export default ArtistCard 
