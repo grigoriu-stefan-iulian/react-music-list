@@ -12,7 +12,7 @@ import ArtistCard from './ArtistCard';
 import { SearchResult } from './SearchResult';
 
 // No duplicates allowed
-// Rating
+// Rating - done
 // Format listeners number
 // Codrin: sistem de tracking al activitatii pe internet
 // Component lifecycle: constructor(), componentDidMount(), render(), componentWillUnmount(), componentDidCatch()
@@ -67,8 +67,14 @@ class App extends Component {
   onResultClick = (artist) => {
     this.clearSearch();
     const savedArtists = this.state.savedArtists;
-    savedArtists.push(artist);
+    savedArtists.push({ ...artist, rating: null });
     this.updateArtists(savedArtists);
+  }
+
+  handleRating = (rating, artist) => {
+    artist.rating = rating
+    this.updateArtists(this.state.savedArtists);
+
   }
 
   render() {
@@ -118,6 +124,7 @@ class App extends Component {
           {
             this.state.savedArtists.map((artist, index) => {
               return <ArtistCard
+                handleRating={this.handleRating}
                 artist={artist}
                 key={index}
                 deleteArtist={this.deleteArtist}

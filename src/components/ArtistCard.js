@@ -1,62 +1,35 @@
 import React from 'react';
 import { Card, CardContent, CardActions, Button } from '@material-ui/core'
 import Rating from 'material-ui-rating'
+import numeral from 'numeral'
 
-class ArtistCard extends React.Component {
-  constructor({ artist, deleteArtist }) {
-    super()
 
-    this.state = {
-      rating: undefined
-    }
+const ArtistCard = ({ artist, deleteArtist, handleRating }) => (
 
-    this.handleRating = (rating) => {
-      this.setState({ rating: rating })
-     
-      const setRatings =  JSON.stringify(this.state.rating)
-      localStorage.setItem('ratings', setRatings) 
-      console.log(this.state.rating)
-    }
-
-    this.getRatings = () => {
-      const myRatings = localStorage.getItem('ratings')
-      this.setState(() => ({ rating: JSON.parse(myRatings) }))
-    }
-    this.componentDidMount = () => {
-          this.getRatings()
-    }
-    this.render = () => {
-        
-      return (
-      
-        <Card className="artist-card">  
-     
-          <div className="image-container">
-            <img src={artist.cardImage} alt={artist.name} />
-          </div>
-          <CardContent>
-            <h3>{artist.name}</h3>
-            <p>{artist.listeners} listeners.</p>
-            <p>
-            </p>
-          </CardContent>
-          <Rating
-            value={this.state.rating}
-            max={5}
-            onChange={(e) => this.handleRating(e)}
-          />
-          <CardActions>
-            <Button size="small" color="primary">
-              Share
-      </Button>
-            <Button size="small" color="secondary" onClick={() => deleteArtist(artist)}>
-              Delete
-      </Button>
-          </CardActions>
-        </Card>
-      )
-    }
-  }
-}
+  <Card className="artist-card">
+    <div className="image-container">
+      <img src={artist.cardImage} alt={artist.name} />
+    </div>
+    <CardContent>
+      <h3>{artist.name}</h3>
+      <p>{numeral(artist.listeners).format('0,0')} listeners.</p>
+      <p>
+      </p>
+    </CardContent>
+    <Rating
+      value={artist.rating}
+      max={5}
+      onChange={(e) => handleRating(e, artist)}
+    />
+    <CardActions>
+      <Button size="small" color="primary">
+        Share
+ </Button>
+      <Button size="small" color="secondary" onClick={() => deleteArtist(artist)}>
+        Delete
+ </Button>
+    </CardActions>
+  </Card>
+)
 
 export default ArtistCard 
