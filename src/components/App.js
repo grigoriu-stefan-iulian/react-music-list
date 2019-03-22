@@ -11,6 +11,9 @@ import {
 import ArtistCard from './ArtistCard';
 import { SearchResult } from './SearchResult';
 
+// if artist already fav change fav button to unfav
+// modal on fav artist delete
+// Responsive ArtistsCard
 // No duplicates allowed - done
 // Rating - done
 // Format listeners number - done
@@ -18,6 +21,7 @@ import { SearchResult } from './SearchResult';
 // Component lifecycle: constructor(), componentDidMount(), render(), componentWillUnmount(), componentDidCatch()
 
 const isEmpty = (str) => str.length === 0;
+
 class App extends Component {
   state = {
     searchTerm: '',
@@ -73,15 +77,13 @@ class App extends Component {
       this.updateArtists(savedArtists);
 
     } else {
-      console.log('artist already saved')  //method to notify user that the artist already favorited
+      console.log('artist already saved') 
     }
-
   }
 
   handleRating = (rating, artist) => {
     artist.rating = rating
     this.updateArtists(this.state.savedArtists);
-
   }
 
   render() {

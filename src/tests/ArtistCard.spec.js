@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { ArtistCard } from './ArtistCard'
+import { ArtistCard } from '../components/ArtistCard'
 
 const mockArtist = {
     cardImage: 'something',
