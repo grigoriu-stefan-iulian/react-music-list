@@ -1,14 +1,14 @@
 import React from 'react'
-import { AppBar, 
-    Toolbar, 
-    Typography, 
-    TextField, 
-    Button, 
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    TextField,
+    Button,
     List,
-    ListItem, 
-    ListItemAvatar, 
-    ListItemText, 
-    Avatar } from '@material-ui/core'
+    ListItem,
+    ListItemText,
+} from '@material-ui/core'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles';
 
@@ -46,7 +46,7 @@ const Header = ({ onTextChange, state, onSearchClick, classes }) => (
             </Button>
                 {this.state.searchText.length && (
                     <Button
-                        onClick={() => this.setState({ searchText: '' })}
+                        onClick={() => {}}
                         variant="contained"
                     >
                         Clear
@@ -63,7 +63,7 @@ const Header = ({ onTextChange, state, onSearchClick, classes }) => (
                     key={i}
                 >
                     <ListItemText primary={artist.name} />
-                     Views: {artist.listeners} 
+                    Views: {artist.listeners}
                 </ListItem>)
 
 
