@@ -3,6 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { getArtists } from '../services/api';
+import ClearIcon from '@material-ui/icons/Clear';
 import {
   TextField,
   Button,
@@ -11,6 +12,8 @@ import {
 import ArtistCard from './ArtistCard';
 import { SearchResult } from './SearchResult';
 
+
+// change "clear" button to 'x' inside input
 // if artist already fav change fav button to unfav
 // modal on fav artist delete
 // Responsive ArtistsCard
@@ -42,7 +45,6 @@ class App extends Component {
   }
 
   search = async (terms) => {
-
     const artists = await getArtists(terms);
     this.setState({ artists: artists })
   }
@@ -77,7 +79,7 @@ class App extends Component {
       this.updateArtists(savedArtists);
 
     } else {
-      console.log('artist already saved') 
+      console.log('artist already saved')
     }
   }
 
@@ -90,18 +92,28 @@ class App extends Component {
     const results = this.state.artists || [];
     return (
       <div className="App">
-        <header className="App-header">
-          <AppBar position="static" color="primary">
-            <Toolbar className="search-bar">
+        <header className="app-header">
+          <AppBar
+            position="static"
+            color="primary">
+            <Toolbar className="search-bar content-container">
               <Typography variant="h6" color="inherit">
-                Last.fm Music List
+                Music List
               </Typography>
-              <TextField
-                placeholder="Search on Last.fm"
-                className="search-input"
-                onChange={this.onTextChange}
-                value={this.state.searchTerm}
-              />
+              <div className="search-container">
+                <TextField
+                  placeholder="Search on Last.fm"
+                  className="search-input"
+                  onChange={this.onTextChange}
+                  value={this.state.searchTerm}
+                />
+                {!isEmpty(this.state.searchTerm) && (
+                  <ClearIcon className="button--clear"
+                    onClick={this.clearSearch} />
+                )}
+              </div>
+
+
               <Button
                 onClick={this.onSearchClick}
                 variant="contained"
@@ -110,26 +122,20 @@ class App extends Component {
               >
                 Search
               </Button>
-              {!isEmpty(this.state.searchTerm) && (
-                <Button
-                  onClick={this.clearSearch}
-                  variant="contained"
-                >
-                  Clear
-                </Button>)
-              }
             </Toolbar>
           </AppBar>
         </header>
+        <div className="content-container">
+          <List className="search-results">
+            {
+              results.map((artist, index) => {
+                return <SearchResult key={index} artist={artist} onResultClick={this.onResultClick} />
+              })
+            }
+          </List>
+        </div>
 
-        <List className="search-results">
-          {
-            results.map((artist, index) => {
-              return <SearchResult key={index} artist={artist} onResultClick={this.onResultClick} />
-            })
-          }
-        </List>
-        <div className="artist-container">
+        <div className="artist-container content-container">
           {
             this.state.savedArtists.map((artist, index) => {
               return <ArtistCard
