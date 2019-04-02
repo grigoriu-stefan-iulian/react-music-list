@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { List } from '@material-ui/core'
 import SearchResult from './SearchResult'
+import MusifyContext from '../context/musify-context';
 
-const ArtistList = ({ artists, onResultClick }) => {
+const ArtistList = () => {
+    const { artists } = useContext(MusifyContext)
     const results = artists || []
+
     return (
         <div className="content-container">
             <List className="search-results">
@@ -12,7 +15,6 @@ const ArtistList = ({ artists, onResultClick }) => {
                         return <SearchResult
                             key={index}
                             artist={artist}
-                            onResultClick={onResultClick}
                         />
                     })
                 }

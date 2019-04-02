@@ -1,21 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ArtistCard from './ArtistCard'
+import MusifyContext from '../context/musify-context';
 
-const FavoriteArtists = ({ savedArtists, handleRating, deleteArtist }) => {
+const FavoriteArtists = () => {
+    const { savedArtists } = useContext(MusifyContext)
     return (
         <div className="artist-container content-container">
             {
                 savedArtists.map((artist, index) => {
                     return <ArtistCard
-                        handleRating={handleRating}
                         artist={artist}
                         key={index}
-                        deleteArtist={deleteArtist}
                     />
                 })
             }
         </div>
-
     )
 }
 
