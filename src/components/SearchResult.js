@@ -7,7 +7,7 @@ import {
   Avatar
 } from '@material-ui/core';
 
-export const SearchResult = (props) => {
+const SearchResult = (props) => {
   const { artist, onResultClick } = props;
   return (
     <ListItem
@@ -31,3 +31,5 @@ export const SearchResult = (props) => {
     </ListItem>
   )
 }
+
+export default SearchResult

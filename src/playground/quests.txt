@@ -1,0 +1,11 @@
+ 
+ afisare eroare daca nu putem gasi artisti(eroare de server sau 0 rezultate) - homework
+ button 'x' inside input
+ if artist already fav change fav button to unfav
+ modal on fav artist delete
+ Responsive ArtistsCard - display: flex; flex-wrap: wrap
+ No duplicates allowed - done
+ Rating - done
+ Format listeners number - done
+ Codrin: sistem de tracking al activitatii pe internet
+ Component lifecycle: constructor(), componentDidMount(), render(), componentWillUnmount(), componentDidCatch()
