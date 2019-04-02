@@ -1,22 +1,28 @@
- 
- share artist feature
- afisare eroare daca nu putem gasi artisti(eroare de server sau 0 rezultate) - homework
- button 'x' inside input
- if artist already fav change fav button to unfav
- modal on fav artist delete
- Responsive ArtistsCard - display: flex; flex-wrap: wrap
 
+share artist feature
+afisare eroare daca nu putem gasi artisti(eroare de server sau 0 rezultate) - homework
+if artist already fav change fav button to unfav and make it functional
+style header
+style artist list
+style fav ArtistsCard
+style Modal
 
-
-login screen
 Firebase
+login screen
 login
 database
 
 
+
         DONE
- No duplicates allowed - done
- Rating - done
- Format listeners number - done
- Codrin: sistem de tracking al activitatii pe internet
- Component lifecycle: constructor(), componentDidMount(), render(), componentWillUnmount(), componentDidCatch()
+modal on fav artist delete - done
+Responsive ArtistsCard - display: flex; flex-wrap: wrap - done
+don't remove results after clicking clear x - done
+implement context and reducer - done
+implement hooks - done
+No duplicates allowed - done
+Rating - done
+Format listeners number - done
+button 'x' inside input - done (needs styling)
+
+Component lifecycle: constructor(), componentDidMount(), render(), componentWillUnmount(), componentDidCatch()

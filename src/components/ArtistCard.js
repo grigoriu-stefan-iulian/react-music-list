@@ -1,11 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, CardContent, CardActions, Button } from '@material-ui/core'
 import Rating from 'material-ui-rating'
 import numeral from 'numeral'
 import MusifyContext from '../context/musify-context'
+import DeleteArtistModal from './DeleteArtistModal'
 
 const ArtistCard = ({ artist }) => {
   const { dispatch } = useContext(MusifyContext)
+  const [modalIsOpen, setmodalIsOpen] = useState(false)
+
+  const openModal = () => {
+    setmodalIsOpen(true)
+  }
+
+  const closeModal = () => {
+    setmodalIsOpen(false)
+  }
 
   const handleRating = (rating, artist) => {
     dispatch({ type: 'EDIT_ARTIST', artist, updates: { rating } })
@@ -30,13 +40,18 @@ const ArtistCard = ({ artist }) => {
       <CardActions>
         <Button size="small" color="primary">
           Share
- </Button>
+        </Button>
         <Button
           size="small"
           color="secondary"
-          onClick={() => dispatch({ type: "DELETE_ARTIST", artist })} >
+          onClick={openModal} >
           Delete
- </Button>
+        </Button>
+        <DeleteArtistModal
+          artist={artist}
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+        />
       </CardActions>
     </Card>
   )

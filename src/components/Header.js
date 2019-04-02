@@ -12,7 +12,6 @@ import { withStyles } from '@material-ui/core/styles'
 import { getArtists } from '../services/api'
 import MusifyContext from '../context/musify-context';
 
-
 const styles = (theme) => ({
     button: {
         margin: theme.spacing.unit,
@@ -25,9 +24,9 @@ const styles = (theme) => ({
 const isEmpty = (str) => str.length === 0
 
 const Header = () => {
-   // const { dispatch } = useContext(MusifyContext)
     const [searchText, setSearchText] = useState('')
     const { setArtists } = useContext(MusifyContext)
+
     const onTextChange = (e) => {
         const value = e.target.value
         setSearchText(value)
@@ -36,12 +35,10 @@ const Header = () => {
     const search = async (terms) => {
         const artists = await getArtists(terms)
         setArtists(artists)
-        console.log(artists)
     }
 
     const clearSearch = () => {
-      setSearchText('')
-      setArtists([])
+        setSearchText('')
     }
 
     return (
@@ -53,7 +50,7 @@ const Header = () => {
                     <Toolbar className="search-bar content-container">
                         <Typography variant="h6" color="inherit">
                             Musify
-          </Typography>
+                    </Typography>
                         <div className="search-container">
                             <TextField
                                 placeholder="Search..."
@@ -68,7 +65,6 @@ const Header = () => {
                                 />
                             )}
                         </div>
-
                         <Button
                             variant="contained"
                             color="secondary"
@@ -76,7 +72,7 @@ const Header = () => {
                             disabled={isEmpty(searchText)}
                         >
                             Search
-          </Button>
+                        </Button>
                     </Toolbar>
                 </AppBar>
             </header>
