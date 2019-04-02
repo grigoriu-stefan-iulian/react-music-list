@@ -1,85 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import { getArtists } from '../services/api'
-import Header from './Header'
-import ArtistList from './ArtistList'
+import React, { useEffect, useReducer, useState } from 'react'
 import FavoriteArtists from './FavoriteArtists'
+import MusifyContext from '../context/musify-context'
+import MusifyReducer from '../reducers/musify-reducer'
+import ArtistList from './ArtistList'
+import Header from './Header'
 
 const MusifyApp = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [savedArtists, setSavedArtists] = useState([]);
-  const [artists, setArtists] = useState([]);
-
-  const onTextChange = (e) => {
-    const value = e.target.value
-    setSearchTerm(value)
-  }
-
-  const search = async (terms) => {
-    const artists = await getArtists(terms)
-    setArtists(artists)
-    console.log(artists)
-  }
-
-  const onSearchClick = () => {
-    search(searchTerm)
-  }
-
-  const clearSearch = () => {
-    setSearchTerm('')
-    setArtists([])
-  }
-
-  const updateArtists = (newArtists) => {
-    setSavedArtists(newArtists)
-    localStorage.setItem('savedArtists', JSON.stringify(newArtists))
-  }
-
-  const deleteArtist = (artist) => {
-    const result = savedArtists.filter(item => item.name !== artist.name)
-    updateArtists(result)
-  }
-
-  const onResultClick = (artist) => {
-    clearSearch()
-    const alreadyExists = savedArtists.find(item => item.name === artist.name)
-    if (!alreadyExists) {
-      updateArtists([...savedArtists, {...artist, rating: null}])
-
-    } else {
-      console.log('artist already saved')
-    }
-  }
-
-  const handleRating = (rating, artist) => {
-    artist.rating = rating
-    updateArtists(savedArtists)
-  }
+  const [savedArtists, dispatch] = useReducer(MusifyReducer, [])
+  const [artists, setArtists] = useState([])
 
   useEffect(() => {
-    console.log('triggered useEffect')
     const existing = localStorage.getItem('savedArtists')
     if (existing) {
-      setSavedArtists(JSON.parse(existing))
+      dispatch({ type: "POPULATE_LIST", artists: JSON.parse(localStorage.getItem('savedArtists')) })
     }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('savedArtists', JSON.stringify(savedArtists))
+  }, [savedArtists])
+
   return (
-    <div className="App">
-      <Header
-        onTextChange={onTextChange}
-        searchTerm={searchTerm}
-        onSearchClick={onSearchClick}
-        clearSearch={clearSearch}
-      />
-      <ArtistList
-        artists={artists}
-        onResultClick={onResultClick}
-      />
-      <FavoriteArtists
-        handleRating={handleRating}
-        deleteArtist={deleteArtist}
-        savedArtists={savedArtists}
-      />
-    </div>
+    <MusifyContext.Provider value={{ savedArtists, dispatch, artists, setArtists }}>
+      <Header />
+      <ArtistList />
+      <FavoriteArtists />
+    </MusifyContext.Provider>
   )
 }
 

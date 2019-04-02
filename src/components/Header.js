@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import {
     AppBar,
     Toolbar,
@@ -9,6 +9,8 @@ import {
 import ClearIcon from '@material-ui/icons/Clear'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import { getArtists } from '../services/api'
+import MusifyContext from '../context/musify-context';
 
 
 const styles = (theme) => ({
@@ -22,9 +24,26 @@ const styles = (theme) => ({
 
 const isEmpty = (str) => str.length === 0
 
-// onTextChange, state, onSearchClick, classes
-const Header = ({ onTextChange, searchTerm, onSearchClick, classes, clearSearch }) => {
-    // const [searchText, setSearchText] = useState('')
+const Header = () => {
+   // const { dispatch } = useContext(MusifyContext)
+    const [searchText, setSearchText] = useState('')
+    const { setArtists } = useContext(MusifyContext)
+    const onTextChange = (e) => {
+        const value = e.target.value
+        setSearchText(value)
+    }
+
+    const search = async (terms) => {
+        const artists = await getArtists(terms)
+        setArtists(artists)
+        console.log(artists)
+    }
+
+    const clearSearch = () => {
+      setSearchText('')
+      setArtists([])
+    }
+
     return (
         <div className="container">
             <header className="header app-header">
@@ -40,9 +59,9 @@ const Header = ({ onTextChange, searchTerm, onSearchClick, classes, clearSearch 
                                 placeholder="Search..."
                                 className="search-input"
                                 onChange={onTextChange}
-                                value={searchTerm}
+                                value={searchText}
                             />
-                            {!isEmpty(searchTerm) && (
+                            {!isEmpty(searchText) && (
                                 <ClearIcon
                                     className="button--clear"
                                     onClick={clearSearch}
@@ -53,9 +72,8 @@ const Header = ({ onTextChange, searchTerm, onSearchClick, classes, clearSearch 
                         <Button
                             variant="contained"
                             color="secondary"
-                            className={classes.button}
-                            onClick={onSearchClick}
-                            disabled={isEmpty(searchTerm)}
+                            onClick={() => search(searchText)}
+                            disabled={isEmpty(searchText)}
                         >
                             Search
           </Button>
