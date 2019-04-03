@@ -3,7 +3,6 @@ import Modal from 'react-modal'
 import MusifyContext from '../context/musify-context'
 import ModalContext from '../context/modal-context';
 
-
 const customStyles = {
     content: {
         top: '50%',
