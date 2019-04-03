@@ -14,7 +14,7 @@ const customStyles = {
     }
 }
 
-Modal.setAppElement('#root')
+Modal.setAppElement("#root")
 
 const ShareModal = () => {
     const { closeModal, shareModal, setShareModal } = useContext(ModalContext)
