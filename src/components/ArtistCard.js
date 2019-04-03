@@ -3,18 +3,23 @@ import { Card, CardContent, CardActions, Button } from '@material-ui/core'
 import Rating from 'material-ui-rating'
 import numeral from 'numeral'
 import MusifyContext from '../context/musify-context'
+import ModalContext from '../context/modal-context'
+
 import DeleteArtistModal from './DeleteArtistModal'
+import ShareModal from './ShareModal';
+//import ShareModal from './ShareModal'
 
 const ArtistCard = ({ artist }) => {
   const { dispatch } = useContext(MusifyContext)
-  const [modalIsOpen, setmodalIsOpen] = useState(false)
+  const [deleteModal, setDeleteModal] = useState(false)
+  const [shareModal, setShareModal] = useState(false)
 
-  const openModal = () => {
-    setmodalIsOpen(true)
+  const openModal = (setModal) => {
+    setModal(true)
   }
 
-  const closeModal = () => {
-    setmodalIsOpen(false)
+  const closeModal = (setModal) => {
+    setModal(false)
   }
 
   const handleRating = (rating, artist) => {
@@ -38,20 +43,25 @@ const ArtistCard = ({ artist }) => {
         onChange={(e) => handleRating(e, artist)}
       />
       <CardActions>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          color="primary"
+        onClick={() => openModal(setShareModal)}
+        >
           Share
         </Button>
         <Button
           size="small"
           color="secondary"
-          onClick={openModal} >
+          onClick={() => openModal(setDeleteModal)} >
           Delete
         </Button>
-        <DeleteArtistModal
-          artist={artist}
-          modalIsOpen={modalIsOpen}
-          closeModal={closeModal}
-        />
+        <ModalContext.Provider 
+        value={{ artist, deleteModal, closeModal, setDeleteModal, shareModal, setShareModal}}>
+          <DeleteArtistModal />
+          <ShareModal />
+        </ModalContext.Provider>
+
       </CardActions>
     </Card>
   )
