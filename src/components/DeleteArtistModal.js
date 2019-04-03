@@ -13,7 +13,7 @@ const customStyles = {
     }
 }
 
-Modal.setAppElement('#root')
+Modal.setAppElement("#root")
 
 const DeleteArtistModal = () => {
     const { artist, closeModal, deleteModal, setDeleteModal } = useContext(ModalContext)

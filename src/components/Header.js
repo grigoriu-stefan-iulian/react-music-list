@@ -48,6 +48,9 @@ const Header = () => {
                                 className="search-input"
                                 onChange={(e) => setSearchText(e.target.value)}
                                 value={searchText}
+                                onKeyPress={(e) => e.key === 'Enter' && searchText
+                                    ? search(searchText)
+                                    : ''}
                             />
                             {!isEmpty(searchText) && (
                                 <ClearIcon
