@@ -5,13 +5,14 @@ import MusifyContext from '../context/musify-context';
 
 const ArtistList = () => {
     const { artists } = useContext(MusifyContext)
-    const results = artists || []
 
     return (
         <div className="content-container">
             <List className="search-results">
-                {
-                    results.map((artist, index) => {
+                {artists === 'No artists' ?
+                    <h5>No artists found. Try another search.</h5>
+                    :
+                    artists.map((artist, index) => {
                         return <SearchResult
                             key={index}
                             artist={artist}
@@ -20,7 +21,6 @@ const ArtistList = () => {
                 }
             </List>
         </div>
-
     )
 }
 

@@ -27,18 +27,9 @@ const Header = () => {
     const [searchText, setSearchText] = useState('')
     const { setArtists } = useContext(MusifyContext)
 
-    const onTextChange = (e) => {
-        const value = e.target.value
-        setSearchText(value)
-    }
-
     const search = async (terms) => {
         const artists = await getArtists(terms)
-        setArtists(artists)
-    }
-
-    const clearSearch = () => {
-        setSearchText('')
+        artists.length === 0 ? setArtists('No artists') : setArtists(artists)
     }
 
     return (
@@ -55,13 +46,13 @@ const Header = () => {
                             <TextField
                                 placeholder="Search..."
                                 className="search-input"
-                                onChange={onTextChange}
+                                onChange={(e) => setSearchText(e.target.value)}
                                 value={searchText}
                             />
                             {!isEmpty(searchText) && (
                                 <ClearIcon
                                     className="button--clear"
-                                    onClick={clearSearch}
+                                    onClick={() => setSearchText('')}
                                 />
                             )}
                         </div>

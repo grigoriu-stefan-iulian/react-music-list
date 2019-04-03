@@ -1,11 +1,12 @@
 
-afisare eroare daca nu putem gasi artisti(eroare de server sau "No artists found")
 if artist already fav change fav button to unfav and make it functional
+insert default image if artist doesn't have one
+tests
 style buttons
 style header
 style artist list
 style fav ArtistsCard
-style delete and share Modals
+style delete and share (plus share icons - hover effects, cursor: pointer) Modals
 
 
 Firebase
@@ -16,6 +17,7 @@ database
 
 
         DONE
+afisare eroare daca nu putem gasi artisti(eroare de server sau "No artists found") - done
 share artist feature (facebook, twitter, instagram) - done
 modal on fav artist delete - done
 Responsive ArtistsCard flex-wrap: wrap - done
