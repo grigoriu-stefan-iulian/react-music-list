@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import Modal from 'react-modal'
-import MusifyContext from '../context/musify-context';
+import MusifyContext from '../context/musify-context'
+import ModalContext from '../context/modal-context';
+
 
 const customStyles = {
     content: {
@@ -8,20 +10,20 @@ const customStyles = {
         left: '50%',
         right: 'auto',
         bottom: 'auto',
-
         transform: 'translate(-50%, -50%)'
     }
 }
 
 Modal.setAppElement('#root')
 
-const DeleteArtistModal = ({ artist, closeModal, modalIsOpen }) => {
+const DeleteArtistModal = () => {
+    const { artist, closeModal, deleteModal, setDeleteModal } = useContext(ModalContext)
     const { dispatch } = useContext(MusifyContext)
 
     return (
         <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
+            isOpen={deleteModal}
+            onRequestClose={() => closeModal(setDeleteModal)}
             style={customStyles}
             contentLabel="Example Modal"
         >
@@ -29,11 +31,12 @@ const DeleteArtistModal = ({ artist, closeModal, modalIsOpen }) => {
             <h4>The data will be lost.</h4>
             <button onClick={() => {
                 dispatch({ type: "DELETE_ARTIST", artist })
-                closeModal()
-            }
-            }
-            >Yes</button>
-            <button onClick={closeModal}>No</button>
+                closeModal(setDeleteModal)
+            }}
+            >
+                Yes
+            </button>
+            <button onClick={() => closeModal(setDeleteModal)}>No</button>
         </Modal>
     )
 }
