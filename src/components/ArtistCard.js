@@ -22,10 +22,9 @@ const ArtistCard = ({ artist }) => {
 
   const handleRating = (rating, artist) => {
     if (rating === artist.rating) {
-      dispatch({ type: "EDIT_ARTIST", artist, updates: { rating: 0 } })
-    } else {
-      dispatch({ type: "EDIT_ARTIST", artist, updates: { rating } })
+      return dispatch({ type: "EDIT_ARTIST", artist, updates: { rating: 0 } })
     }
+    return dispatch({ type: "EDIT_ARTIST", artist, updates: { rating } })
   }
 
   return (

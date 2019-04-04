@@ -14,7 +14,10 @@ const customStyles = {
     }
 }
 
-Modal.setAppElement("#root")
+// workaround for test cases
+if (process.env.NODE_ENV !== 'test') {
+    Modal.setAppElement('#root');
+}
 
 const ShareModal = () => {
     const { closeModal, shareModal, setShareModal } = useContext(ModalContext)

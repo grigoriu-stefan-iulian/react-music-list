@@ -9,6 +9,10 @@ const mockArtist = {
     rating: 4
 }
 
+beforeEach(() => {
+    document.querySelectorAll('root')
+  });
+
 test('Should render ArtistCard correctly', ()=> {
     const component = renderer.create(<ArtistCard artist={mockArtist} />)
     const instance = component.toJSON()

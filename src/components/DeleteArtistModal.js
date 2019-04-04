@@ -13,7 +13,10 @@ const customStyles = {
     }
 }
 
-Modal.setAppElement("#root")
+if (process.env.NODE_ENV !== 'test') {
+    Modal.setAppElement('#root');
+}
+
 
 const DeleteArtistModal = () => {
     const { artist, closeModal, deleteModal, setDeleteModal } = useContext(ModalContext)
