@@ -1,6 +1,9 @@
 
+check boilerplate
+required notification on Search field
+replace inline functions inside render() with funciton calls
+implement useRef() hook
 tests (snapshots)
-if pressing Enter on empty Search input should display some form validation error
 share an artist, not the app
 if artist already fav change fav button to unfav and make it functional
 insert default image if artist doesn't have one
