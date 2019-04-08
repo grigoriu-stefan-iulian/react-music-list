@@ -10,7 +10,7 @@ import ClearIcon from '@material-ui/icons/Clear'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { getArtists } from '../services/api'
-import MusifyContext from '../context/musify-context';
+import MusifyContext from '../context/musify-context'
 
 const styles = (theme) => ({
     button: {
@@ -21,7 +21,12 @@ const styles = (theme) => ({
     },
 })
 
-const isEmpty = (str) => str.length === 0
+const isEmpty = (str) => {
+    if (str === undefined) {
+        return true
+    }
+    return str.length === 0
+}
 
 const Header = () => {
     const [searchText, setSearchText] = useState('')
@@ -31,7 +36,13 @@ const Header = () => {
         const artists = await getArtists(terms)
         artists.length === 0 ? setArtists('No artists') : setArtists(artists)
     }
-
+    const handleSearch = (e) => {
+        e.preventDefault()
+        search(searchText)
+    }
+    const handleSetSearchText = (e) => setSearchText(e.target.value)
+    const handleClearSearchText = () => setSearchText('')
+ 
     return (
         <div className="container">
             <header className="header app-header">
@@ -42,31 +53,30 @@ const Header = () => {
                         <Typography variant="h6" color="inherit">
                             Musify
                     </Typography>
-                        <div className="search-container">
-                            <TextField
-                                placeholder="Search..."
-                                className="search-input"
-                                onChange={(e) => setSearchText(e.target.value)}
-                                value={searchText}
-                                onKeyPress={(e) => e.key === 'Enter' && searchText
-                                    ? search(searchText)
-                                    : ''}
-                            />
-                            {!isEmpty(searchText) && (
-                                <ClearIcon
-                                    className="button--clear"
-                                    onClick={() => setSearchText('')}
+                        <form onSubmit={handleSearch} >
+                            <div className="search-container">
+                                <TextField
+                                    placeholder="Search..."
+                                    className="search-input"
+                                    onChange={handleSetSearchText}
+                                    value={searchText}
                                 />
-                            )}
-                        </div>
-                        <Button
-                            variant="contained"
-                            color="secondary"
-                            onClick={() => search(searchText)}
-                            disabled={isEmpty(searchText)}
-                        >
-                            Search
+                                {!isEmpty(searchText) && (
+                                    <ClearIcon
+                                        className="button--clear"
+                                        onClick={handleClearSearchText}
+                                    />
+                                )}
+                            </div>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                onClick={handleSearch}
+                                disabled={isEmpty(searchText)}
+                            >
+                                Search
                         </Button>
+                        </form>
                     </Toolbar>
                 </AppBar>
             </header>
