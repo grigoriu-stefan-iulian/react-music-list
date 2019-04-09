@@ -17,11 +17,13 @@ if (process.env.NODE_ENV !== 'test') {
     Modal.setAppElement('#root');
 }
 
-
 const DeleteArtistModal = () => {
-    const { artist, handleCloseDeleteModal, deleteModal} = useContext(ModalContext)
+    const { artist, handleCloseDeleteModal, deleteModal } = useContext(ModalContext)
     const { dispatch } = useContext(MusifyContext)
-
+    const handleDeleteArtist = () => {
+        dispatch({ type: "DELETE_ARTIST", artist })
+        handleCloseDeleteModal()
+    }
     return (
         <Modal
             isOpen={deleteModal}
@@ -31,10 +33,7 @@ const DeleteArtistModal = () => {
         >
             <h2>Delete {artist.name} from favorites?</h2>
             <h4>The data will be lost.</h4>
-            <button onClick={() => {
-                dispatch({ type: "DELETE_ARTIST", artist })
-                handleCloseDeleteModal()
-            }}
+            <button onClick={handleDeleteArtist}
             >
                 Yes
             </button>

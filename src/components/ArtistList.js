@@ -16,7 +16,8 @@ const ArtistList = () => {
                             key={index}
                             artist={artist}
                         />
-                    })}
+                    })
+                }
             </List>
         </div>
     )
