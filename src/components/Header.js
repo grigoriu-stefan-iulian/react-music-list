@@ -42,7 +42,7 @@ const Header = () => {
     }
     const handleSetSearchText = (e) => setSearchText(e.target.value)
     const handleClearSearchText = () => setSearchText('')
- 
+
     return (
         <div className="container">
             <header className="header app-header">
@@ -56,6 +56,7 @@ const Header = () => {
                         <form onSubmit={handleSearch} >
                             <div className="search-container">
                                 <TextField
+                                    required
                                     placeholder="Search..."
                                     className="search-input"
                                     onChange={handleSetSearchText}

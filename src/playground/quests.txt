@@ -1,7 +1,6 @@
 
-check boilerplate
-required notification on Search field
-replace inline functions inside render() with funciton calls
+
+
 implement useRef() hook
 tests (snapshots)
 share an artist, not the app
@@ -22,6 +21,8 @@ database
 
 
         DONE
+        
+replace inline functions inside render() with funciton calls - done
 search artist on Enter - done
 abillity to unrate artist - done
 afisare eroare daca nu putem gasi artisti(eroare de server sau "No artists found") - done
@@ -35,5 +36,5 @@ No duplicates allowed - done
 Rating - done
 Format listeners number - done
 button 'x' inside input - done
-
+required notification on Search field- done
 Component lifecycle: constructor(), componentDidMount(), render(), componentWillUnmount(), componentDidCatch()
