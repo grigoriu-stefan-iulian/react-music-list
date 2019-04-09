@@ -10,15 +10,16 @@ import MusifyContext from '../context/musify-context';
 
 const SearchResult = ({ artist }) => {
   const { savedArtists, dispatch } = useContext(MusifyContext)
+  const alreadyExists = savedArtists.find(item => item.name === artist.name)
 
-  const onResultClick = (artist) => {
-    const alreadyExists = savedArtists.find(item => item.name === artist.name)
+  const dispatchFavorite = (artist) => {
     if (!alreadyExists) {
       dispatch({ type: "ADD_ARTIST", savedArtist: { ...artist, rating: null } })
     } else {
       console.log('artist already saved')
     }
   }
+  const handleFavorite = () => dispatchFavorite(artist)
 
   return (
     <ListItem
@@ -30,15 +31,26 @@ const SearchResult = ({ artist }) => {
         <Avatar src={artist.avatar} alt={artist.name} />
       </ListItemAvatar>
       <ListItemText primary={artist.name} />
-      <Button
+      {!!alreadyExists ? <Button
         variant="outlined"
         color="secondary"
         size="small"
         className="add-button"
-        onClick={onResultClick}
+        onClick={handleFavorite}
       >
-        Add to favorites
+        Remove from favs
       </Button>
+        :
+        <Button
+          variant="outlined"
+          color="secondary"
+          size="small"
+          className="add-button"
+          onClick={handleFavorite}
+        >
+          Add to Favorites
+      </Button>}
+
     </ListItem>
   )
 }

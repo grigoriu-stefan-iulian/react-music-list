@@ -4,7 +4,7 @@
 implement useRef() hook
 tests (snapshots)
 share an artist, not the app
-if artist already fav change fav button to unfav and make it functional
+if artist already fav, change fav button to unfav and make it functional
 insert default image if artist doesn't have one
 style buttons
 style header
@@ -21,7 +21,7 @@ database
 
 
         DONE
-        
+
 replace inline functions inside render() with funciton calls - done
 search artist on Enter - done
 abillity to unrate artist - done
