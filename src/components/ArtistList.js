@@ -5,22 +5,18 @@ import MusifyContext from '../context/musify-context';
 
 const ArtistList = () => {
     const { artists } = useContext(MusifyContext)
-    const populateArtists = () => {
-        artists.map((artist, index) => {
-            return <SearchResult
-                key={index}
-                artist={artist}
-            />
-        })
-    }
     return (
         <div className="content-container">
             <List className="search-results">
                 {artists === 'No artists' ?
                     <h5>No artists found. Try another search.</h5>
                     :
-                    populateArtists()
-                }
+                    artists.map((artist, index) => {
+                        return <SearchResult
+                            key={index}
+                            artist={artist}
+                        />
+                    })}
             </List>
         </div>
     )

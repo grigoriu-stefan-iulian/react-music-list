@@ -19,13 +19,13 @@ if (process.env.NODE_ENV !== 'test') {
 
 
 const DeleteArtistModal = () => {
-    const { artist, closeModal, deleteModal, setDeleteModal } = useContext(ModalContext)
+    const { artist, handleCloseDeleteModal, deleteModal} = useContext(ModalContext)
     const { dispatch } = useContext(MusifyContext)
 
     return (
         <Modal
             isOpen={deleteModal}
-            onRequestClose={() => closeModal(setDeleteModal)}
+            onRequestClose={handleCloseDeleteModal}
             style={customStyles}
             contentLabel="Example Modal"
         >
@@ -33,12 +33,12 @@ const DeleteArtistModal = () => {
             <h4>The data will be lost.</h4>
             <button onClick={() => {
                 dispatch({ type: "DELETE_ARTIST", artist })
-                closeModal(setDeleteModal)
+                handleCloseDeleteModal()
             }}
             >
                 Yes
             </button>
-            <button onClick={() => closeModal(setDeleteModal)}>No</button>
+            <button onClick={handleCloseDeleteModal}>No</button>
         </Modal>
     )
 }
