@@ -35,7 +35,7 @@ const SearchResult = ({ artist }) => {
         color="secondary"
         size="small"
         className="add-button"
-        onClick={() => onResultClick(artist)}
+        onClick={onResultClick}
       >
         Add to favorites
       </Button>

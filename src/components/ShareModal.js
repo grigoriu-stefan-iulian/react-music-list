@@ -20,19 +20,17 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 const ShareModal = () => {
-    const { closeModal, shareModal, setShareModal } = useContext(ModalContext)
+    const { shareModal, handleCloseShareModal} = useContext(ModalContext)
     return (
         <Modal
             isOpen={shareModal}
-            onRequestClose={() => closeModal(setShareModal)}
+            onRequestClose={handleCloseShareModal}
             style={customStyles}
             contentLabel="Example Modal"
         >
         <ShareButtons />
            
-            <button onClick={() => {
-                closeModal(setShareModal)
-            }
+            <button onClick={handleCloseShareModal
             }
             >Close</button>
 

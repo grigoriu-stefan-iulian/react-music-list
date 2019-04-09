@@ -15,10 +15,14 @@ const ArtistCard = ({ artist }) => {
   const openModal = (setModal) => {
     setModal(true)
   }
+  const handleOpenShareModal = () => openModal(setShareModal)
+  const handleOpenDeleteModal = () => openModal(setDeleteModal)
 
   const closeModal = (setModal) => {
     setModal(false)
   }
+  const handleCloseShareModal = () => closeModal(setShareModal)
+  const handleCloseDeleteModal = () => closeModal(setDeleteModal)
 
   const handleRating = (rating, artist) => {
     if (rating === artist.rating) {
@@ -26,6 +30,7 @@ const ArtistCard = ({ artist }) => {
     }
     return dispatch({ type: "EDIT_ARTIST", artist, updates: { rating } })
   }
+  const setRating = (e) => handleRating(e, artist)
 
   return (
     <Card className="artist-card">
@@ -41,25 +46,25 @@ const ArtistCard = ({ artist }) => {
       <Rating
         value={artist.rating}
         max={5}
-        onChange={(e) => handleRating(e, artist)}
+        onChange={setRating}
       />
       <CardActions>
         <Button
           size="small"
           color="primary"
-          onClick={() => openModal(setShareModal)}
+          onClick={handleOpenShareModal}
         >
           Share
         </Button>
         <Button
           size="small"
           color="secondary"
-          onClick={() => openModal(setDeleteModal)}
+          onClick={handleOpenDeleteModal}
         >
           Delete
         </Button>
         <ModalContext.Provider
-          value={{ artist, deleteModal, closeModal, setDeleteModal, shareModal, setShareModal }}>
+          value={{ artist, shareModal, deleteModal, handleCloseShareModal, handleCloseDeleteModal }}>
           <DeleteArtistModal />
           <ShareModal />
         </ModalContext.Provider>
