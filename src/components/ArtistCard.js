@@ -6,27 +6,25 @@ import MusifyContext from '../context/musify-context'
 import ModalContext from '../context/modal-context'
 import DeleteArtistModal from './DeleteArtistModal'
 import ShareModal from './ShareModal';
+//import placeholderImage from '../../public/images/placeholderImage.png'
 
 const ArtistCard = ({ artist }) => {
   const { dispatch } = useContext(MusifyContext)
   const [deleteModal, setDeleteModal] = useState(false)
   const [shareModal, setShareModal] = useState(false)
 
-  const openModal = (setModal) => {
-    setModal(true)
-  }
-  const handleOpenShareModal = () => openModal(setShareModal)
-  const handleOpenDeleteModal = () => openModal(setDeleteModal)
+  const openModal = (setModal) => setModal(true)
+  const closeModal = (setModal) => setModal(false)
 
-  const closeModal = (setModal) => {
-    setModal(false)
-  }
+  const handleOpenShareModal = () => openModal(setShareModal)
   const handleCloseShareModal = () => closeModal(setShareModal)
+  const handleOpenDeleteModal = () => openModal(setDeleteModal)
   const handleCloseDeleteModal = () => closeModal(setDeleteModal)
 
   const handleRating = (rating, artist) => {
-    if (rating === artist.rating) {
+    if (rating === artist.rating) { console.log(artist)
       return dispatch({ type: "EDIT_ARTIST", artist, updates: { rating: 0 } })
+     
     }
     return dispatch({ type: "EDIT_ARTIST", artist, updates: { rating } })
   }
@@ -35,7 +33,8 @@ const ArtistCard = ({ artist }) => {
   return (
     <Card className="artist-card">
       <div className="image-container">
-        <img src={artist.cardImage} alt={artist.name} />
+
+        <img src={artist.cardImage || "https://via.placeholder.com/300?text=No+Artist+Image"} alt={artist.name} />
       </div>
       <CardContent>
         <h3>{artist.name}</h3>
