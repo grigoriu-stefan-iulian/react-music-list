@@ -1,9 +1,4 @@
-
-
-
-implement useRef() hook
-tests (snapshots)
-share an artist, not the app
+boilerplate
 if artist already fav, change fav button to unfav and make it functional
 insert default image if artist doesn't have one
 style buttons
@@ -11,7 +6,8 @@ style header
 style artist list
 style fav ArtistsCard
 style delete and share (plus share icons - hover effects, cursor: pointer) Modals
-
+tests (snapshots)
+share an artist, not the app
 
 Firebase
 login screen

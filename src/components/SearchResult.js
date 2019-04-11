@@ -16,8 +16,8 @@ const SearchResult = ({ artist }) => {
     if (!alreadyExists) {
       dispatch({ type: "ADD_ARTIST", savedArtist: { ...artist, rating: null } })
     } else {
-      console.log('artist already saved')
-    }
+      dispatch({ type: "DELETE_ARTIST", artist })}
+      console.log('ddd')
   }
   const handleFavorite = () => dispatchFavorite(artist)
 
@@ -38,7 +38,7 @@ const SearchResult = ({ artist }) => {
         className="add-button"
         onClick={handleFavorite}
       >
-        Remove from favs
+        Remove from Favorites
       </Button>
         :
         <Button
