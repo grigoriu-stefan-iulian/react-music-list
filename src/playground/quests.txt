@@ -1,6 +1,4 @@
-boilerplate
-if artist already fav, change fav button to unfav and make it functional
-insert default image if artist doesn't have one
+
 style buttons
 style header
 style artist list
@@ -8,6 +6,7 @@ style fav ArtistsCard
 style delete and share (plus share icons - hover effects, cursor: pointer) Modals
 tests (snapshots)
 share an artist, not the app
+boilerplate
 
 Firebase
 login screen
@@ -17,7 +16,9 @@ database
 
 
         DONE
-
+        
+insert default image if artist doesn't have one - done
+if artist already fav, change fav button to unfav and make it functional - done
 replace inline functions inside render() with funciton calls - done
 search artist on Enter - done
 abillity to unrate artist - done

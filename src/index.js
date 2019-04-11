@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/styles.scss';
-import MusifyApp from './components/MusifyApp'
+import MusicAppRouter from './routers/MusicAppRouter'
 
-ReactDOM.render(<MusifyApp />, document.getElementById('root'));
+ReactDOM.render(<MusicAppRouter />, document.getElementById('root'));
 

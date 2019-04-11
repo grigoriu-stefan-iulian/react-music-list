@@ -6,7 +6,6 @@ import MusifyContext from '../context/musify-context'
 import ModalContext from '../context/modal-context'
 import DeleteArtistModal from './DeleteArtistModal'
 import ShareModal from './ShareModal';
-//import placeholderImage from '../../public/images/placeholderImage.png'
 
 const ArtistCard = ({ artist }) => {
   const { dispatch } = useContext(MusifyContext)
@@ -22,9 +21,8 @@ const ArtistCard = ({ artist }) => {
   const handleCloseDeleteModal = () => closeModal(setDeleteModal)
 
   const handleRating = (rating, artist) => {
-    if (rating === artist.rating) { console.log(artist)
+    if (rating === artist.rating) {
       return dispatch({ type: "EDIT_ARTIST", artist, updates: { rating: 0 } })
-     
     }
     return dispatch({ type: "EDIT_ARTIST", artist, updates: { rating } })
   }
