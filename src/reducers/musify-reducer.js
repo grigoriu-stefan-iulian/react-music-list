@@ -5,7 +5,7 @@ const MusifyReducer = (state, action) => {
         case "POPULATE_LIST":
             return action.artists
         case "DELETE_ARTIST":
-            return state.filter((artist) => artist !== action.artist)
+            return state.filter((artist) => artist.name !== action.artist.name)
         case "ADD_ARTIST":
             return [...state, action.savedArtist]
         case "EDIT_ARTIST":
