@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import {
     AppBar,
     Toolbar,
@@ -51,7 +52,7 @@ const Header = () => {
                     color="primary">
                     <Toolbar className="search-bar content-container">
                         <Typography variant="h6" color="inherit">
-                            Musify
+                            <Link to="/" >Musify</Link>
                     </Typography>
                         <form onSubmit={handleSearch} >
                             <div className="search-container">
@@ -80,6 +81,7 @@ const Header = () => {
                         </form>
                     </Toolbar>
                 </AppBar>
+                <Link to="/favorites/">Favorites</Link>
             </header>
         </div>
     )
