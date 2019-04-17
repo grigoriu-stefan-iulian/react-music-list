@@ -1,4 +1,3 @@
-
 style buttons
 style header
 style artist list
@@ -17,6 +16,7 @@ database
 
         DONE
         
+react-router HomePage, FavoriteArtists - done
 insert default image if artist doesn't have one - done
 if artist already fav, change fav button to unfav and make it functional - done
 replace inline functions inside render() with funciton calls - done
