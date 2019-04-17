@@ -16,8 +16,9 @@ const SearchResult = ({ artist }) => {
     if (!alreadyExists) {
       dispatch({ type: "ADD_ARTIST", savedArtist: { ...artist, rating: null } })
     } else {
-      dispatch({ type: "DELETE_ARTIST", artist })}
-      console.log('ddd')
+      dispatch({ type: "DELETE_ARTIST", artist })
+    }
+    console.log('ddd')
   }
   const handleFavorite = () => dispatchFavorite(artist)
 
@@ -31,26 +32,15 @@ const SearchResult = ({ artist }) => {
         <Avatar src={artist.avatar} alt={artist.name} />
       </ListItemAvatar>
       <ListItemText primary={artist.name} />
-      {!!alreadyExists ? <Button
+      <Button
         variant="outlined"
         color="secondary"
         size="small"
         className="add-button"
         onClick={handleFavorite}
       >
-        Remove from Favorites
+        {!!alreadyExists ? 'Remove from Favorites' : 'Add to Favorites'}
       </Button>
-        :
-        <Button
-          variant="outlined"
-          color="secondary"
-          size="small"
-          className="add-button"
-          onClick={handleFavorite}
-        >
-          Add to Favorites
-      </Button>}
-
     </ListItem>
   )
 }
