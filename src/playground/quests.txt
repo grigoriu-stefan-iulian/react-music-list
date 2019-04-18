@@ -5,7 +5,6 @@ style fav ArtistsCard
 style delete and share (plus share icons - hover effects, cursor: pointer) Modals
 tests (snapshots)
 share an artist, not the app
-boilerplate
 
 Firebase
 login screen
@@ -15,7 +14,7 @@ database
 
 
         DONE
-        
+remove search when going to favs or home - done
 react-router HomePage, FavoriteArtists - done
 insert default image if artist doesn't have one - done
 if artist already fav, change fav button to unfav and make it functional - done
