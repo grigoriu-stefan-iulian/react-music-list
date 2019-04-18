@@ -25,8 +25,8 @@ const MusicAppRouter = () => {
         <MusifyContext.Provider value={{ savedArtists, dispatch, artists, setArtists }}>
             <BrowserRouter>
             <Header />
-            <ArtistList />
                 <Switch>
+                    <Route path="/search" component={ArtistList} />
                     <Route path="/favorites" component={FavoriteArtists} />
 
                 </Switch>

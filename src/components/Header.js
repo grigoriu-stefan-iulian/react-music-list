@@ -53,7 +53,7 @@ const Header = () => {
                     <Toolbar className="search-bar content-container">
                         <Typography variant="h6" color="inherit">
                             <Link to="/" >Musify</Link>
-                    </Typography>
+                        </Typography>
                         <form onSubmit={handleSearch} >
                             <div className="search-container">
                                 <TextField
@@ -76,8 +76,12 @@ const Header = () => {
                                 onClick={handleSearch}
                                 disabled={isEmpty(searchText)}
                             >
-                                Search
-                        </Button>
+                                <Link 
+                                className="search-link"
+                                to="/search">
+                                    Search
+                            </Link>
+                            </Button>
                         </form>
                     </Toolbar>
                 </AppBar>

@@ -18,7 +18,6 @@ const SearchResult = ({ artist }) => {
     } else {
       dispatch({ type: "DELETE_ARTIST", artist })
     }
-    console.log('ddd')
   }
   const handleFavorite = () => dispatchFavorite(artist)
 
