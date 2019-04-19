@@ -8,11 +8,11 @@ import {
     TextField
 } from '@material-ui/core'
 import ClearIcon from '@material-ui/icons/Clear'
-import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+//import PropTypes from 'prop-types'
+//import { withStyles } from '@material-ui/core/styles'
 import { getArtists } from '../services/api'
 import MusifyContext from '../context/musify-context'
-
+/*
 const styles = (theme) => ({
     button: {
         margin: theme.spacing.unit,
@@ -21,7 +21,7 @@ const styles = (theme) => ({
         display: 'none',
     },
 })
-
+*/
 const isEmpty = (str) => {
     if (str === undefined) {
         return true
@@ -45,54 +45,57 @@ const Header = () => {
     const handleClearSearchText = () => setSearchText('')
 
     return (
-        <div className="container">
-            <header className="header app-header">
-                <AppBar
-                    position="static"
-                    color="primary">
-                    <Toolbar className="search-bar content-container">
-                        <Typography variant="h6" color="inherit">
-                            <Link to="/" >Musify</Link>
-                        </Typography>
-                        <form onSubmit={handleSearch} >
-                            <div className="search-container">
-                                <TextField
-                                    required
-                                    placeholder="Search..."
-                                    className="search-input"
-                                    onChange={handleSetSearchText}
-                                    value={searchText}
+        <AppBar
+            position="static"
+            color="primary">
+            
+            <div className="content-container">
+                <Toolbar className="header__content">
+                    <Typography variant="h6" color="inherit">
+                        <Link className="header__logo" to="/" >
+                            <h1>Musify</h1>
+                        </Link>
+                    </Typography>
+                    <form onSubmit={handleSearch} >
+                        <div className="search-container">
+                            <TextField
+                                required
+                                placeholder="Search..."
+                                className="search-input"
+                                onChange={handleSetSearchText}
+                                value={searchText}
+                            />
+                            {!isEmpty(searchText) && (
+                                <ClearIcon
+                                    className="button--clear"
+                                    onClick={handleClearSearchText}
                                 />
-                                {!isEmpty(searchText) && (
-                                    <ClearIcon
-                                        className="button--clear"
-                                        onClick={handleClearSearchText}
-                                    />
-                                )}
-                            </div>
-                            <Button
-                                variant="contained"
-                                color="secondary"
-                                onClick={handleSearch}
-                                disabled={isEmpty(searchText)}
-                            >
-                                <Link 
+                            )}
+                        </div>
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            onClick={handleSearch}
+                            disabled={isEmpty(searchText)}
+                        >
+                            <Link
                                 className="search-link"
                                 to="/search">
-                                    Search
+                                Search
                             </Link>
-                            </Button>
-                        </form>
-                    </Toolbar>
-                </AppBar>
-                <Link to="/favorites/">Favorites</Link>
-            </header>
-        </div>
+                        </Button>
+                    </form>
+                    <Link className="header__favorites" to="/favorites/">Favorites</Link>
+                </Toolbar>
+            </div>
+        </AppBar>
     )
 }
-
+/*
 Header.propTypes = {
     classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Header)
+*/
+export default Header
