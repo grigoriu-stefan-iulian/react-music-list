@@ -14,6 +14,8 @@ database
 
 
         DONE
+        
+add NotFoundPage - done
 remove search when going to favs or home - done
 react-router HomePage, FavoriteArtists - done
 insert default image if artist doesn't have one - done

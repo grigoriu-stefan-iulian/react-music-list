@@ -5,6 +5,8 @@ import FavoriteArtists from '../components/FavoriteArtists'
 import MusifyContext from '../context/musify-context'
 import MusifyReducer from '../reducers/musify-reducer'
 import ArtistList from '../components/ArtistList'
+import NotFoundPage from '../components/NotFoundPage'
+import Home from '../components/Home'
 
 const MusicAppRouter = () => {
     const [savedArtists, dispatch] = useReducer(MusifyReducer, [])
@@ -24,11 +26,12 @@ const MusicAppRouter = () => {
     return (
         <MusifyContext.Provider value={{ savedArtists, dispatch, artists, setArtists }}>
             <BrowserRouter>
-            <Header />
+                <Header />
                 <Switch>
+                    <Route path="/" component={Home} exact />
                     <Route path="/search" component={ArtistList} />
                     <Route path="/favorites" component={FavoriteArtists} />
-
+                    <Route component={NotFoundPage} />
                 </Switch>
             </BrowserRouter>
         </MusifyContext.Provider>
