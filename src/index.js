@@ -4,5 +4,5 @@ import './styles/styles.scss';
 import MusicAppRouter from './routers/MusicAppRouter'
 import MaterialUITest from './playground/MaterialUI-playground'
 
-ReactDOM.render(<MaterialUITest />, document.getElementById('root'));
+ReactDOM.render(<MusicAppRouter />, document.getElementById('root'));
 
