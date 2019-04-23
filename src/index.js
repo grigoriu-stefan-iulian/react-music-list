@@ -5,4 +5,3 @@ import MusicAppRouter from './routers/MusicAppRouter'
 import MaterialUITest from './playground/MaterialUI-playground'
 
 ReactDOM.render(<MusicAppRouter />, document.getElementById('root'));
-
