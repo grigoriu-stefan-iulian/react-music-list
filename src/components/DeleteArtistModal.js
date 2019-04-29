@@ -26,18 +26,26 @@ const DeleteArtistModal = () => {
     }
     return (
         <Modal
+            className="modal"
             isOpen={deleteModal}
             onRequestClose={handleCloseDeleteModal}
             style={customStyles}
             contentLabel="Example Modal"
         >
-            <h2>Delete {artist.name} from favorites?</h2>
+            <h2 className="modal__title">Delete {artist.name} from favorites?</h2>
             <h4>The data will be lost.</h4>
-            <button onClick={handleDeleteArtist}
+            <button
+                className="button"
+                onClick={handleDeleteArtist}
             >
                 Yes
             </button>
-            <button onClick={handleCloseDeleteModal}>No</button>
+            <button
+                className="button button--secondary"
+                onClick={handleCloseDeleteModal}
+            >
+                No
+            </button>
         </Modal>
     )
 }

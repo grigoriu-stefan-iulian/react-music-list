@@ -10,7 +10,7 @@ const Home = () => {
             <FeaturedArtists />
 
             <Link
-                className="button--link"
+                className="button"
                 to="/favorites"
             >
                 Manage Your Favorites

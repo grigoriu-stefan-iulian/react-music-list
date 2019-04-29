@@ -13,7 +13,7 @@ import {
 const ShareButtons = () => {
     const props = {
         quote: "Take a look at this app hosted on Heroku",
-        url: "heroku.com",
+        url: "https://grigoriu-stefan-music-list-app.netlify.com/",
         hashtags: ['reactjs', 'reactmodal', 'musiclist'],
         className: "share-item"
     }
