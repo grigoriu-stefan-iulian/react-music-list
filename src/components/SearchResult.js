@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 import {
   Button,
   ListItem,
   ListItemAvatar,
   ListItemText,
   Avatar
-} from '@material-ui/core';
-import MusifyContext from '../context/musify-context';
+} from '@material-ui/core'
+import MusifyContext from '../context/musify-context'
 
 const SearchResult = ({ artist }) => {
   const { savedArtists, dispatch } = useContext(MusifyContext)

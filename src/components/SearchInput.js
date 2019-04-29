@@ -19,7 +19,7 @@ const SearchInput = () => {
     const { setArtists } = useContext(MusifyContext)
 
     const search = async (terms) => {
-        const artists = await getArtists(terms)
+        const artists = await getArtists(terms, '&method=artist.search')
         artists.length === 0 ? setArtists('No artists') : setArtists(artists)
     }
     const handleSearch = (e) => {
@@ -42,7 +42,6 @@ const SearchInput = () => {
                 value={searchText}
             />
             <Button
-               
                 variant="contained"
                 color="primary"
                 onClick={handleSearch}
@@ -52,7 +51,7 @@ const SearchInput = () => {
                     className="search-link"
                     to="/search">
                     Search
-                            </Link>
+                </Link>
             </Button>
         </form>
     )

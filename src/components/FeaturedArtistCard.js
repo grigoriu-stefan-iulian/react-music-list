@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Card, CardContent } from '@material-ui/core'
 import Rating from 'material-ui-rating'
 import numeral from 'numeral'

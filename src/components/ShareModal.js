@@ -3,20 +3,9 @@ import Modal from 'react-modal'
 import ShareButtons from './ShareButtons'
 import ModalContext from '../context/modal-context'
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-
-        transform: 'translate(-50%, -50%)'
-    }
-}
-
 // workaround for test cases
 if (process.env.NODE_ENV !== 'test') {
-    Modal.setAppElement('#root');
+    Modal.setAppElement('#root')
 }
 
 const ShareModal = () => {
@@ -26,10 +15,9 @@ const ShareModal = () => {
             className="modal"
             isOpen={shareModal}
             onRequestClose={handleCloseShareModal}
-            style={customStyles}
             contentLabel="Example Modal"
         >
-            <h3 className="modal__title">Select Share Option</h3>
+            <h3 className="modal__title">Select Option</h3>
             <ShareButtons />
             <button 
             className="button button--secondary"
@@ -38,7 +26,7 @@ const ShareModal = () => {
                 Close
             </button>
         </Modal>
-    );
-};
+    )
+}
 
-export default ShareModal;
+export default ShareModal

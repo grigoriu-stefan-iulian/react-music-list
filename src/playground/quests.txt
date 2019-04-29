@@ -1,7 +1,4 @@
 
-style artist list
-style fav ArtistsCard
-
 Future plans:
 Firebase
 login screen
@@ -13,7 +10,9 @@ tests (snapshots)
 
 
         DONE
-        
+refactor API call
+style fav ArtistsCard
+style artist list
 style delete and share (plus share icons - hover effects, cursor: pointer) Modals
 style buttons
 style header
