@@ -1,4 +1,4 @@
-.button:hover, #button:hover {
+.button:hover, #button:hover, #button--secondary:hover {
     background: #bbbbbb;
     cursor: pointer;
 }
@@ -14,7 +14,24 @@
     line-height: 1;
     padding: $s-size;
     text-decoration: none;
+    text-transform: capitalize;
 }
+
+//Material UI requires Id to style root component. Cannot give more than one ID, so we have some duplicate code.
+#button--secondary {
+    background: $red;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    display: inline-block;
+    font-size: $m-size;
+    font-weight: 300;
+    line-height: 1;
+    padding: $s-size;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
 
 .button--secondary {
     background: $red;

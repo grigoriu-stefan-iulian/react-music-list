@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Header from '../components/Header'
 import FavoriteArtists from '../components/FavoriteArtists'
 import MusifyContext from '../context/musify-context'
@@ -37,7 +37,7 @@ const MusicAppRouter = () => {
                 <Footer />
             </BrowserRouter>
         </MusifyContext.Provider>
-    );
-};
+    )
+}
 
-export default MusicAppRouter;
+export default MusicAppRouter

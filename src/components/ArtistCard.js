@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react'
 import { Card, CardContent, CardActions, Button } from '@material-ui/core'
 import Rating from 'material-ui-rating'
 import numeral from 'numeral'
 import MusifyContext from '../context/musify-context'
 import ModalContext from '../context/modal-context'
 import DeleteArtistModal from './DeleteArtistModal'
-import ShareModal from './ShareModal';
+import ShareModal from './ShareModal'
 
 const ArtistCard = ({ artist }) => {
   const { dispatch } = useContext(MusifyContext)
@@ -47,6 +47,7 @@ const ArtistCard = ({ artist }) => {
       />
       <CardActions>
         <Button
+          id="button"
           size="small"
           color="primary"
           onClick={handleOpenShareModal}
@@ -54,6 +55,7 @@ const ArtistCard = ({ artist }) => {
           Share
         </Button>
         <Button
+          id="button--secondary"
           size="small"
           color="secondary"
           onClick={handleOpenDeleteModal}

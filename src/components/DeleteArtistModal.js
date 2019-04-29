@@ -1,20 +1,10 @@
 import React, { useContext } from 'react'
 import Modal from 'react-modal'
 import MusifyContext from '../context/musify-context'
-import ModalContext from '../context/modal-context';
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        transform: 'translate(-50%, -50%)'
-    }
-}
+import ModalContext from '../context/modal-context'
 
 if (process.env.NODE_ENV !== 'test') {
-    Modal.setAppElement('#root');
+    Modal.setAppElement('#root')
 }
 
 const DeleteArtistModal = () => {
@@ -29,13 +19,12 @@ const DeleteArtistModal = () => {
             className="modal"
             isOpen={deleteModal}
             onRequestClose={handleCloseDeleteModal}
-            style={customStyles}
             contentLabel="Example Modal"
         >
             <h2 className="modal__title">Delete {artist.name} from favorites?</h2>
             <h4>The data will be lost.</h4>
             <button
-                className="button"
+                className="button option-one"
                 onClick={handleDeleteArtist}
             >
                 Yes

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import ArtistCard from './ArtistCard'
-import MusifyContext from '../context/musify-context';
+import MusifyContext from '../context/musify-context'
 
 const FavoriteArtists = () => {
     const { savedArtists } = useContext(MusifyContext)
