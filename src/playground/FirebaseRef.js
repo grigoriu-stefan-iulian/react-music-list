@@ -9,7 +9,6 @@ const dbSnap = () => dbRef.on('value', snap => {
 
 class FirebaseRef extends React.Component {
 
-
   render() {
     return (
       <div>

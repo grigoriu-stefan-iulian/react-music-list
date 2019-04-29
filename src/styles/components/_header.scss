@@ -1,20 +1,56 @@
-.header {
-}
-
 .header__content {
     display: flex;
-    justify-content: space-between;
-    padding: $m-size 0;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.header__logo, .header__favorites {
+.header__logo,
+.header__favorites__link {
     color: white;
     text-decoration: none;
+    font-weight: bold;
+    line-height: 1;
     h1 {
         margin: 0;
     }
 }
 
-.MuiInputBase-input-104 .MuiInput-input-89{
-    background: rgb(255, 0, 0);
+.search-link {
+    text-decoration: none;
+    color: black;
+    font-size: $s-size;
+    font-weight: bold;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#standard-search {
+    border: none;
+    color: black;
+    font-size: $m-size;
+    padding: 10px 0 10px 20px;
+}
+
+#appbar-content {
+    display: flex;
+    align-items: center;    
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.header__app-name{ 
+    padding-right: 20px;
+}
+
+.header__favorites {
+    padding-left: 20px;
+
+}
+
+.form-content {
+    display: flex;
+    align-items: center;
 }

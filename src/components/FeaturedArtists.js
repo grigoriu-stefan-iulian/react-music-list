@@ -13,7 +13,7 @@ const FeaturedArtists = () => {
     }, [])
     return (
         <div>
-            <h2>Featured Artists</h2>
+            <h2 className="introduction__header">Featured Artists</h2>
             <div className="artist-container">
 
                 {featuredA.map((artist, index) => {
