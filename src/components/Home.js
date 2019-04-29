@@ -6,10 +6,15 @@ import FeaturedArtists from './FeaturedArtists'
 const Home = () => {
     return (
         <div className="content-container">
-            <Link to="/favorites">Visit Favorites</Link>
             <AppIntroduction />
             <FeaturedArtists />
-            
+
+            <Link
+                className="button--link"
+                to="/favorites"
+            >
+                Manage Your Favorites
+            </Link>
         </div>
     )
 }

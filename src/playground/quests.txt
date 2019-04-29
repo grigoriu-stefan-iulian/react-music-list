@@ -1,4 +1,3 @@
-display top artists on HomePage
 style buttons
 style header
 style artist list
@@ -18,7 +17,7 @@ tests (snapshots)
 
         DONE
 
-
+display top artists on HomePage - done
 add NotFoundPage - done
 remove search when going to favs or home - done
 react-router HomePage, FavoriteArtists - done

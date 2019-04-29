@@ -1,15 +1,17 @@
-
-.button--clear {
-    background: none;
-    border: none;
-    border-radius: 50%;
-    color: black;
-    font-size: 44rem;
-    padding: 1px;
-    transition: background 3s ease;
-}
-
 .button--clear:hover {
     background: #bbbbbb;
     cursor: pointer;
+}
+
+.button--link {
+    background: $blue;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: $m-size;
+    font-weight: 300;
+    line-height: 1;
+    padding: $s-size;
+    text-decoration: none;
 }

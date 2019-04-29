@@ -4,10 +4,6 @@ div.search-input {
     border: none;
 }
 
-.search-input input {
-    color: white;
-}
-
 ul.search-results {
     width: 50%;
 }
@@ -47,9 +43,4 @@ ul.search-results {
     width: 240px;
     min-height: 320px;
     margin: 10px;
-}
-
-.search-container {
-    display: flex;
-    flex-direction: row;
 }

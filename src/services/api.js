@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const ARTISTS_URL = 'https://ws.audioscrobbler.com/2.0/?limit=5&format=json&method=artist.search&api_key=' + process.env.REACT_APP_LASTFM_APPKEY
-const FEATURED_URL = 'https://ws.audioscrobbler.com//2.0/?method=geo.gettopartists&country=romania&format=json&limit=5&api_key=' + process.env.REACT_APP_LASTFM_APPKEY
+const FEATURED_URL = 'https://ws.audioscrobbler.com//2.0/?method=geo.gettopartists&country=romania&format=json&limit=6&api_key=' + process.env.REACT_APP_LASTFM_APPKEY
 
 export const getArtists = async (terms) => {
   const request = ARTISTS_URL + '&artist=' + terms
