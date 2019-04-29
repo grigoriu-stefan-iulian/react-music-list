@@ -1,9 +1,6 @@
-style buttons
-style header
+
 style artist list
 style fav ArtistsCard
-style delete and share (plus share icons - hover effects, cursor: pointer) Modals
-share an artist, not the app
 
 Future plans:
 Firebase
@@ -16,7 +13,10 @@ tests (snapshots)
 
 
         DONE
-
+        
+style delete and share (plus share icons - hover effects, cursor: pointer) Modals
+style buttons
+style header
 display top artists on HomePage - done
 add NotFoundPage - done
 remove search when going to favs or home - done

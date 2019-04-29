@@ -32,6 +32,7 @@ const SearchResult = ({ artist }) => {
       </ListItemAvatar>
       <ListItemText primary={artist.name} />
       <Button
+      id="button"
         variant="outlined"
         color="secondary"
         size="small"

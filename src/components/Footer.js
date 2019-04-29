@@ -7,7 +7,7 @@ const Footer = () => {
                 <a
                     rel="noopener noreferrer"
                     target="_blank"
-                    className="button button--secondary"
+                    className="button button--link"
                     href="https://github.com/grigoriu-stefan-iulian"
                 >
                     Grigoriu Stefan Iulian
