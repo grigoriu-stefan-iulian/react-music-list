@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import ArtistCard from './ArtistCard'
+import FeaturedArtistCard from './FeaturedArtistCard'
 import { getFeaturedArtists } from '../services/api'
 
 const FeaturedArtists = () => {
@@ -15,9 +15,9 @@ const FeaturedArtists = () => {
         <div>
             <h2 className="introduction__header">Featured Artists</h2>
             <div className="artist-container">
-
+            
                 {featuredA.map((artist, index) => {
-                    return <ArtistCard artist={artist} key={index} />
+                    return <FeaturedArtistCard artist={artist} key={index} />
                 })}
             </div>
         </div>

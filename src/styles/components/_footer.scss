@@ -1,0 +1,12 @@
+.footer {
+    background-color: $blue;
+    color: white;
+    margin-top: $l-size;
+    div {
+        padding: $m-size 0;
+        text-align: center;
+    };
+    p {
+        margin: 0;
+    }
+}

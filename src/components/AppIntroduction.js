@@ -2,7 +2,7 @@ import React from 'react'
 
 const AppIntroduction = () => {
     return (
-        <div>
+        <div className="introduction">
             <h1 className="introduction__header">About the Music app</h1>
             <div className="introduction-content">
                 <p>In this app you can search for any artist on Last.FM API service, create your favorite

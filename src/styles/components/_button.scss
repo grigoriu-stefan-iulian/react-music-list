@@ -1,9 +1,9 @@
-.button--clear:hover {
+.button:hover {
     background: #bbbbbb;
     cursor: pointer;
 }
 
-.button--link {
+.button {
     background: $blue;
     color: white;
     border: none;
@@ -14,4 +14,8 @@
     line-height: 1;
     padding: $s-size;
     text-decoration: none;
+}
+
+.button--secondary {
+    background: $red;
 }

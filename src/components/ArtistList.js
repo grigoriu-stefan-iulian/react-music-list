@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { List } from '@material-ui/core'
 import SearchResult from './SearchResult'
 import MusifyContext from '../context/musify-context';
@@ -20,6 +21,12 @@ const ArtistList = () => {
                     })
                 }
             </List>
+            <Link
+                className="button"
+                to="/favorites"
+            >
+                Manage Your Favorites
+            </Link>
         </div>
     )
 }
