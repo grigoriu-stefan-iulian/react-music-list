@@ -37,7 +37,6 @@ const MusicAppRouter = () => {
                 <Footer />
             </BrowserRouter>
         </MusifyContext.Provider>
-
     );
 };
 

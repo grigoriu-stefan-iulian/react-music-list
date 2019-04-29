@@ -5,8 +5,6 @@ const dbRef = firebase.database().ref().child('test')
 const dbSnap = () => dbRef.on('value', snap => {
 
   return 'response'
-
-
 })
 
 class FirebaseRef extends React.Component {
