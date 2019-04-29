@@ -1,20 +1,24 @@
+display top artists on HomePage
 style buttons
 style header
 style artist list
 style fav ArtistsCard
 style delete and share (plus share icons - hover effects, cursor: pointer) Modals
-tests (snapshots)
 share an artist, not the app
 
+Future plans:
 Firebase
 login screen
 login
+logout
 database
+tests (snapshots)
 
 
 
         DONE
-        
+
+
 add NotFoundPage - done
 remove search when going to favs or home - done
 react-router HomePage, FavoriteArtists - done
