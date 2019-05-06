@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react'
-import { Router, Route, Switch } from "react-router-dom"
+import { HashRouter, Route, Switch } from "react-router-dom"
 //import createHistory from 'history/createBrowserHistory'
 import Header from '../components/Header'
 import FavoriteArtists from '../components/FavoriteArtists'
@@ -10,7 +10,7 @@ import NotFoundPage from '../components/NotFoundPage'
 import Home from '../components/Home'
 import Footer from '../components/Footer'
 
-const history = require("history").createBrowserHistory()
+//const history = require("history").createBrowserHistory()
 
 const MusicAppRouter = () => {
     const [savedArtists, dispatch] = useReducer(MusifyReducer, [])
@@ -29,7 +29,7 @@ const MusicAppRouter = () => {
 
     return (
         <MusifyContext.Provider value={{ savedArtists, dispatch, artists, setArtists }}>
-            <Router history={history}>
+            <HashRouter>
                 <Header />
                 <Switch>
                     <Route path="/" component={Home} exact />
@@ -38,7 +38,7 @@ const MusicAppRouter = () => {
                     <Route component={NotFoundPage} />
                 </Switch>
                 <Footer />
-            </Router>
+            </HashRouter>
         </MusifyContext.Provider>
     )
 }
