@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { Router, Route, Switch } from "react-router-dom"
-import createHistory from 'history/createBrowserHistory'
+//import createHistory from 'history/createBrowserHistory'
 import Header from '../components/Header'
 import FavoriteArtists from '../components/FavoriteArtists'
 import MusifyContext from '../context/musify-context'
@@ -10,7 +10,7 @@ import NotFoundPage from '../components/NotFoundPage'
 import Home from '../components/Home'
 import Footer from '../components/Footer'
 
-export const history = createHistory()
+const history = require("history").createBrowserHistory()
 
 const MusicAppRouter = () => {
     const [savedArtists, dispatch] = useReducer(MusifyReducer, [])
