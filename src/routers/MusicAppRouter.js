@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { Router, Route, Switch } from "react-router-dom"
+import createHistory from 'history/createBrowserHistory'
 import Header from '../components/Header'
 import FavoriteArtists from '../components/FavoriteArtists'
 import MusifyContext from '../context/musify-context'
@@ -8,6 +9,8 @@ import ArtistList from '../components/ArtistList'
 import NotFoundPage from '../components/NotFoundPage'
 import Home from '../components/Home'
 import Footer from '../components/Footer'
+
+export const history = createHistory()
 
 const MusicAppRouter = () => {
     const [savedArtists, dispatch] = useReducer(MusifyReducer, [])
@@ -26,7 +29,7 @@ const MusicAppRouter = () => {
 
     return (
         <MusifyContext.Provider value={{ savedArtists, dispatch, artists, setArtists }}>
-            <BrowserRouter>
+            <Router history={history}>
                 <Header />
                 <Switch>
                     <Route path="/" component={Home} exact />
@@ -35,7 +38,7 @@ const MusicAppRouter = () => {
                     <Route component={NotFoundPage} />
                 </Switch>
                 <Footer />
-            </BrowserRouter>
+            </Router>
         </MusifyContext.Provider>
     )
 }
