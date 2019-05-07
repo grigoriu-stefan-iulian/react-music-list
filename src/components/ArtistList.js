@@ -8,17 +8,18 @@ const ArtistList = () => {
     const { artists } = useContext(MusifyContext)
     return (
         <div className="content-container">
-       
+
             <List className="search-results">
-                {artists === 'No artists' ?
+                {artists === 'No artists' ? (
                     <h5>No artists found. Try another search.</h5>
-                    :
-                    artists.map((artist, index) => {
-                        return <SearchResult
-                            key={index}
-                            artist={artist}
-                        />
-                    })
+                ) : (
+                        artists.map((artist, index) => {
+                            return <SearchResult
+                                key={index}
+                                artist={artist}
+                            />
+                        })
+                    )
                 }
             </List>
             <Link
