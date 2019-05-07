@@ -4,6 +4,8 @@ import MusicAppRouter from './routers/MusicAppRouter'
 import MusifyContext from './context/musify-context'
 import MusifyReducer from './reducers/musify-reducer'
 import './styles/styles.scss'
+//import { firebase } from './firebase/firebase'
+//import FirebaseRef from './playground/FirebaseRef'
 
 const App = () => {
     const [savedArtists, dispatch] = useReducer(MusifyReducer, [])

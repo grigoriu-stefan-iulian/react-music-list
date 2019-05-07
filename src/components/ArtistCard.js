@@ -17,6 +17,7 @@ const ArtistCard = ({ artist }) => {
 
   const handleOpenShareModal = () => openModal(setShareModal)
   const handleCloseShareModal = () => closeModal(setShareModal)
+  
   const handleOpenDeleteModal = () => openModal(setDeleteModal)
   const handleCloseDeleteModal = () => closeModal(setDeleteModal)
 

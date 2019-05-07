@@ -8,16 +8,16 @@ import Home from '../components/Home'
 import Footer from '../components/Footer'
 
 const MusicAppRouter = () => (
-            <HashRouter>
-                <Header />
-                <Switch>
-                    <Route path="/" component={Home} exact />
-                    <Route path="/search" component={ArtistList} />
-                    <Route path="/favorites" component={FavoriteArtists} />
-                    <Route component={NotFoundPage} />
-                </Switch>
-                <Footer />
-            </HashRouter>
-    )
+    <HashRouter>
+        <Header />
+        <Switch>
+            <Route path="/" component={Home} exact />
+            <Route path="/search" component={ArtistList} />
+            <Route path="/favorites" component={FavoriteArtists} />
+            <Route component={NotFoundPage} />
+        </Switch>
+        <Footer />
+    </HashRouter>
+)
 
 export default MusicAppRouter
